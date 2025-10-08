@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dark Matter Detector</title>
+  <!-- Bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="{{ url_for('static', filename='custom.css') }}">
+</head>
+<body class="bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+      <a class="navbar-brand fw-semibold" href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='dark_matter_map.jpg') }}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+        Dark Matter Detector</a>
+    </div>
+  </nav>
+  <main class="container mb-5">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="text-center text-muted py-3">
+    <small>Built with Flask & Bootstrap</small>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

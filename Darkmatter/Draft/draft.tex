@@ -1,0 +1,79 @@
+
+\documentclass[12pt,a4paper]{report}
+
+% Packages
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{cite}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+
+\title{Predicting Dark Matter Presence Using Supervised Machine Learning}
+\author{S. M. Jahangir \\ Examination Roll: 232107}
+\date{September 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Dark matter accounts for nearly 27\% of the mass-energy content of the universe \cite{planck2016}. Yet, its direct detection remains elusive. 
+This thesis investigates the use of supervised machine learning (ML) approaches---including Logistic Regression, Support Vector Machines, and ensemble methods---to predict dark matter presence from cosmological data such as galaxy rotation curves, gravitational lensing, and cosmic microwave background measurements. 
+
+Results show that Logistic Regression achieved the highest cross-validation accuracy (90.11\%), outperforming SVM (88.52\%) and tree-based models (87--88\%). ROC and precision-recall analyses further highlight the robustness of these models in distinguishing dark matter signatures. 
+
+This work contributes to astrophysical ML by providing a comparative study of supervised algorithms and suggesting integration with future large-scale surveys. 
+\end{abstract}
+
+\tableofcontents
+
+\chapter{Introduction}
+Dark matter, although invisible, exerts strong gravitational effects on galaxies and clusters \cite{rubin1970,zwicky1933}. 
+Observations such as flat galaxy rotation curves, gravitational lensing \cite{clowe2006}, and anisotropies in the Cosmic Microwave Background (CMB) \cite{planck2016} provide compelling evidence for its existence. 
+
+Despite decades of research, the exact composition of dark matter remains uncertain, with candidates ranging from WIMPs to axions \cite{bertone2005}. 
+Machine learning offers a promising framework to analyze large astrophysical datasets, enabling pattern recognition beyond conventional analytical models. 
+
+\section{Problem Statement}
+The characterization of dark matter is among the open problems in cosmology. 
+This research applies supervised ML models to galaxy property datasets to predict the likelihood of dark matter presence. 
+
+\section{Research Objectives}
+\begin{itemize}
+  \item Estimate dark matter distribution within galaxies. 
+  \item Enhance sensitivity of gravitational lensing and rotation curve detection. 
+  \item Develop simulation-driven models for dark matter candidates (e.g., WIMPs, axions). 
+\end{itemize}
+
+\chapter{Literature Review}
+Zwicky first proposed ``missing mass'' while studying the Coma Cluster \cite{zwicky1933}. Later, Rubin and Ford confirmed the discrepancy in galaxy rotation curves \cite{rubin1970}. 
+The Lambda-CDM model \cite{peebles1993,dodelson2003} remains the dominant framework, though alternatives such as MOND \cite{famaey2012} attempt to explain observations without dark matter. 
+
+Machine learning has been applied in astrophysics for star classification, gravitational lensing predictions, and dark matter halo modeling \cite{navarro1997,diemand2005}. However, most works rely on simulations rather than direct supervised learning on observational datasets---a gap this thesis addresses. 
+
+\chapter{Methodology}
+\section{Data Sources}
+Synthetic datasets were generated using galaxy features such as redshift, velocity dispersion, HI line width, and baryonic mass. Future work may extend this to observational catalogs such as SDSS and Planck. 
+
+\section{Preprocessing}
+Data cleaning, normalization, and feature engineering (e.g., composite indices from rotation curves and surface brightness) were performed. 
+
+\section{Models Used}
+Supervised ML models including Logistic Regression, SVM, Random Forest, Gradient Boosting, and XGBoost were implemented. Hyperparameter tuning via grid search was performed for optimal accuracy. 
+
+\section{Performance Metrics}
+Evaluation used accuracy, precision, recall, F1-score, and ROC-AUC. The confusion matrix guided error analysis. 
+
+\chapter{Results and Discussion}
+Logistic Regression achieved 90.11\% CV accuracy, outperforming more complex models like XGBoost and Random Forest. SVM followed closely at 88.52\%. Decision Trees underperformed (72.57\%).  
+
+ROC and precision-recall curves demonstrated that Logistic Regression had superior generalization across imbalanced datasets. Comparisons with prior works \cite{brook2012,kroupa2001} show consistent trends with galaxy formation theories. 
+
+\chapter{Conclusion and Future Work}
+Dark matter remains elusive despite strong indirect evidence \cite{clowe2006,planck2016}. This study demonstrates that supervised ML methods can effectively model dark matter-related galaxy features.  
+
+Future work should integrate deep learning architectures and test models on real survey data (Euclid, LSST, JWST). Interdisciplinary approaches combining astrophysics and ML can accelerate discovery. 
+
+\bibliographystyle{unsrt}
+\bibliography{Draft/draft}
+\end{document}

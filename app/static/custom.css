@@ -1,0 +1,24 @@
+/* Remove "ugly arrows" from number inputs */
+input[type=number].no-spin::-webkit-outer-spin-button,
+input[type=number].no-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number].no-spin {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/* Subtle polish */
+.result-card .display-6 {
+  letter-spacing: 0.5px;
+}
+.card {
+  border-radius: 1rem;
+}
+.btn {
+  border-radius: 0.75rem;
+}
+
+.form-text { margin-top: 4px; }
+.card { border-radius: 1rem; }
+.btn { border-radius: 0.75rem; }

@@ -1,0 +1,7 @@
+name: dark-matter-predictor
+services:
+  app:
+    build: ./app
+    ports:
+      - "8005:8000"
+    restart: unless-stopped

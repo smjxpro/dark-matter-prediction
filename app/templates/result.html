@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card result-card shadow border-0">
+      <div class="card-body p-4 text-center">
+        {% if is_positive %}
+          <div class="badge bg-success rounded-pill mb-3 px-3 py-2">Result</div>
+          <h3 class="mb-3 text-success">{{ label }}</h3>
+        {% else %}
+          <div class="badge bg-secondary rounded-pill mb-3 px-3 py-2">Result</div>
+          <h3 class="mb-3 text-secondary">{{ label }}</h3>
+        {% endif %}
+
+        <div class="row g-3 justify-content-center">
+          <div class="col-sm-5">
+            <div class="card shadow-sm border-0 h-100">
+              <div class="card-body">
+                <h6 class="text-muted mb-1">Probability (class = 1)</h6>
+                <div class="display-6 fw-bold">{{ probability_pct }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-5">
+            <div class="card shadow-sm border-0 h-100">
+              <div class="card-body">
+                <h6 class="text-muted mb-1">Confidence</h6>
+                <div class="display-6 fw-bold">{{ confidence_pct }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% if ood %}
+          <div class="alert alert-warning mt-4 text-start" role="alert">
+            <strong>Heads up:</strong> Your inputs include values outside the model’s training range (out-of-distribution).
+            The probability shown may be unreliable. Try inputs near the suggested ranges on the form.
+          </div>
+        {% endif %}
+
+        <a href="{{ url_for('index') }}" class="btn btn-outline-primary mt-4">Make Another Prediction</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

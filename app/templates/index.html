@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-xl-9 col-lg-10">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body p-4">
+        <div class="d-flex align-items-center mb-3">
+          <div class="me-2">
+            <span class="badge bg-primary rounded-pill">Input</span>
+          </div>
+          <h2 class="h4 m-0">Predict Dark Matter Presence</h2>
+        </div>
+        <p class="text-muted mb-4">
+          Provide galaxy properties below. Categorical fields use dropdowns to prevent typos.
+        </p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, msg in messages %}
+              <div class="alert alert-{{ category }} mb-3">{{ msg }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('predict') }}" novalidate>
+          <div class="row g-3">
+            {% for item in inputs %}
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">{{ item.name }}</label>
+
+                {% if item.type == "number" %}
+                  <div class="input-group">
+                    <input
+                      type="number"
+                      step="any"
+                      class="form-control no-spin {% if item.error %}is-invalid{% endif %}"
+                      name="{{ item.name }}"
+                      placeholder="{{ item.placeholder }}"
+                      {% if item.min is not none %}min="{{ item.min }}"{% endif %}
+                      {% if item.max is not none %}max="{{ item.max }}"{% endif %}
+                      value="{{ item.value }}"
+                      required
+                    >
+                    {% if item.unit %}
+                      <span class="input-group-text">{{ item.unit }}</span>
+                    {% endif %}
+                    {% if item.error %}
+                      <div class="invalid-feedback">{{ item.error }}</div>
+                    {% endif %}
+                  </div>
+                  {% if item.suggestion %}
+                    <div class="form-text text-muted">{{ item.suggestion }}</div>
+                  {% endif %}
+
+                {% elif item.type == "select" %}
+                  <select
+                    class="form-select {% if item.error %}is-invalid{% endif %}"
+                    name="{{ item.name }}"
+                    required
+                  >
+                    <option value="" disabled {% if not item.value %}selected{% endif %}>Choose...</option>
+                    {% for opt in item.choices %}
+                      <option value="{{ opt }}" {% if item.value == opt %}selected{% endif %}>{{ opt }}</option>
+                    {% endfor %}
+                  </select>
+                  {% if item.error %}
+                    <div class="invalid-feedback">{{ item.error }}</div>
+                  {% endif %}
+                  {% if item.suggestion %}
+                    <div class="form-text text-muted">{{ item.suggestion }}</div>
+                  {% endif %}
+
+                {% elif item.type == "text" %}
+                  <input
+                    type="text"
+                    class="form-control {% if item.error %}is-invalid{% endif %}"
+                    name="{{ item.name }}"
+                    placeholder="{{ item.placeholder }}"
+                    value="{{ item.value }}"
+                    required
+                  >
+                  {% if item.error %}
+                    <div class="invalid-feedback">{{ item.error }}</div>
+                  {% endif %}
+                  {% if item.suggestion %}
+                    <div class="form-text text-muted">{{ item.suggestion }}</div>
+                  {% endif %}
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="d-flex gap-2 mt-4">
+            <button type="submit" class="btn btn-primary px-4">Predict</button>
+            <button type="reset" class="btn btn-outline-secondary">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-3" role="alert">
+      This prototype classifier approximates patterns used to infer dark matter.
+      It cannot directly detect dark matter, and should not be used as a scientific instrument.
+    </div>
+  </div>
+</div>
+{% endblock %}
