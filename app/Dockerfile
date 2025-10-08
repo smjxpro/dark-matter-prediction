@@ -1,16 +1,24 @@
-FROM python:3.12-alpine
+# --- Base image ---
+FROM python:3.12-slim
 
-# Install build tools for numpy/pandas/scikit-learn
-RUN apk add --no-cache gcc g++ musl-dev libffi-dev cmake make
+# --- System dependencies for scientific stack ---
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
 
-# Set working directory
+# --- Set working directory ---
 WORKDIR /app
 
-# Copy and install dependencies
+# --- Copy dependencies ---
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy app
+# --- Upgrade pip and install dependencies ---
+RUN pip install --upgrade pip setuptools wheel
+RUN pip install --no-cache-dir -r requirements.txt --extra-index-url https://pypi.nvidia.com
+
+# --- Copy app ---
 COPY . .
 
+# --- Run the app ---
 CMD ["gunicorn", "-b", "0.0.0.0:8000", "app:app"]
