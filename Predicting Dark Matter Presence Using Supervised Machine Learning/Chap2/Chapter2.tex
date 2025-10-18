@@ -1,0 +1,56 @@
+
+\chapter{Literature Review}
+\label{chap:2}
+
+\section{Overview} 
+
+ This chapter introduces both dark matter and machine learning (ML) applications for astrophysics, and for dark matter studies in particular. The outline of this chapter is as follows: we first give the theoretical background of dark matter (Sect. 2), the role of machine learning in astrophysics (Sect. 3), and previous works that exploit ML for dark matter studies (Sect. 4). The present article provides a backdrop to the current study in the larger body of extant literature, recognizing opportunities and challenges while searching for gaps in knowledge.
+
+\section{Background Study}
+Jones et al. (2024) used deep learning algorithms to investigate gravitational lensing in potential dark matter probes.\cite{jones2024} For the study, they employed convolutional neural networks (CNNs) to find weak distortions in the light it outputs from further away galaxies as a result of dark matter. The accuracy achieved by the model is 92\%, which is significantly better than previous models for identifying dark matter structures in cosmic survey. But the model’s successes were highly dependent on good input data, and observational data is typically limited and subjected to instrumental limitations.
+
+Singh et al. (2023) focused on machine learning projects to predict dark matter from X-ray in the galaxy clusters.\cite{singh2023} They employed the Random Forest (RF) technique to forecast dark matter haloes. The model has an accuracy of 85\% in predicting the position and mass of dark matter halos in clusters. But their work also showed the challenge of working with incomplete or noisy data, especially for distant or faint galaxy clusters that might hurt the accuracy of predictions.
+
+Li et al. (2022) proposed a machine-learning-cosmological simulation hybrid model for learning from simulations how dark matter affects galaxy formation. \cite{li2022} Their model, which is an SVM/neural-network hybrid, achieved an accuracy of 88\% for predicting interactions between dark matter and visible matter. Then, despite the promising appearance of this method, they point out that its applicability is confronted by the heavy computational demands required to perform cosmological simulations.
+
+Chen et al. (2021) constrained interactions of dark matter from CMB using some machine learning tools.\cite{chen2021} They apply decision tree algorithms to distinguish DM candidate signals in cosmological CMB, and obtain an efficiency of 90\%. This method had much promise for analyzing ultra-large CMB data sets, but distinguishing dark matter signals from other astrophysical signals (e.g., the one coming from cosmic inflation) was not at all trivial.
+
+Wang et al. (2020), where a novel unsupervised clustering method to search for DM candidates in upcoming large galaxy surveys is presented.\cite{wang2020} Their clustered approach identified locations where dark matter was more likely to be found. Their predictions was 83\% accurate but they said it would be difficult to disentangle dark matter from other astrophysical signals that have similar clumping patterns (such as normal matter).
+
+Miller et al. (2023) applied deep RL to the optimization of searches for dark matter in colliders.\cite{miller2023} Their RL agent optimized the experimental settings leading to observations of dark matter interactions. The agent's success rate to uncover feasible experiments was 87\%. However, it was found to be computationally expensive and challenging for RL in real settings experiments and shortage of large training datasets.
+
+Khosa et al. (2020) applied Convolutional Neural Networks (CNNs) to simulated liquid-xenon time projection chamber (TPC) data, treating detector readouts as images rather than pre-processed features.\cite{khosa2020cnn}
+Their model achieved an accuracy of around 87 \% in distinguishing simulated WIMP events from electron-recoil backgrounds, demonstrating that CNNs can extract meaningful spatial patterns directly from raw detector outputs.
+However, the study remains limited by several factors: it relied entirely on simulated data, tested only a single WIMP mass (500 GeV), and did not address the extreme class imbalance expected in real experiments.
+\\
+\\
+\\
+
+\section{Summary and Knowledge Gaps}
+
+\begin{table}[h!]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|p{2.8cm}|p{2.8cm}|p{3.2cm}|p{2.8cm}|p{3.2cm}|p{3.5cm}|}
+\hline
+\textbf{Author(s) \& Year} & \textbf{Method} & \textbf{Tools / Data} & \textbf{Results} & \textbf{Limitations} & \textbf{Research Gap} \\ \hline
+
+Jones et al. (2024) & Deep Learning (CNN) & CNN for detecting dark matter in galaxies & 92\% accuracy in identifying dark matter structures & Relies on sparse and limited observational data & Need for higher-quality and larger cosmic survey datasets. \\ \hline
+
+Singh et al. (2023) & Machine Learning (Random Forest) & RF for predicting dark matter halos & 85\% accuracy in identifying halo regions & Incomplete or noisy data, especially in faint clusters & Handling noisy data in distant and faint galaxy clusters. \\ \hline
+
+Li et al. (2022) & Hybrid Model (SVM + NN) & SVM and neural networks for galaxy formation simulations & 88\% accuracy in modeling dark matter impacts & High computational cost from cosmological simulations & Reducing computational burden for large-scale simulations. \\ \hline
+
+Chen et al. (2021) & Machine Learning (Decision Trees) & Decision Trees applied to CMB data & 90\% efficiency in classifying dark matter signals & Overlap between dark matter and cosmic inflation signals & Improve classification models to separate overlapping signal sources. \\ \hline
+
+Wang et al. (2020) & Unsupervised Learning & Clustering in galaxy survey datasets & 83\% accuracy in locating dark matter-rich regions & Confusion between dark and baryonic matter signals & Develop better clustering algorithms for signal differentiation. \\ \hline
+
+Miller et al. (2023) & Reinforcement Learning (RL) & Collider Data & 87\% success rate uncovering feasible experiments & Computationally intensive & Shortage of Large training datasets \\ \hline
+
+Khosa et al. (2020) & Deep Learning (CNN) & Simulated XENON1T data & 87\% accuracy distinguishing WIMP events from backgrounds & Based only on simulations; lacks real detector data validation & Extend CNN models to real detector data and multi-detector transfer learning. \\ \hline
+\end{tabular}%
+}
+\caption{Summary of recent studies on machine learning and deep learning approaches for dark matter detection.}
+\label{tab:dark_matter_studies}
+\end{table}
+
